@@ -34,6 +34,7 @@ window.CERVI = {
 
 
   model: {
+    accept: { minDim: 64, maxDim: 6000, maxMB: 15, minTopProb: 0.40 },
     arch: 'EfficientNet-B0 (timm) + custom head',
     params: '4.3M',
     url: 'https://huggingface.co/ethioel/cerviscan-b0/resolve/main/cervical_b0_fp16.onnx',

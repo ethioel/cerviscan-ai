@@ -467,7 +467,12 @@
       <div class="dropzone" id="dropzone" tabindex="0">
         <div class="dz-icon">🔬</div>
         <b id="dzTitle">Drop a cell image here</b>
-        <span>click, drag &amp; drop, or paste (Ctrl+V) · PNG / JPG</span>
+        <span>click, drag &amp; drop, or paste (Ctrl+V)</span>
+        <div class="chiprow" style="justify-content:center;margin-top:.6rem">
+          <span class="chip ok">✓ Pap smear cell — stained microscopy, single cell</span>
+          <span class="chip">SIPaKMeD-style cytology · auto-resized to 224×224</span>
+          <span class="chip bad">✗ people · objects · documents · tissue scans · screenshots</span>
+        </div>
         <input type="file" id="cellFile" accept="image/*" multiple hidden>
       </div>
     </div>
@@ -515,6 +520,7 @@
             <span class="sum-chip">Normal <b id="sumNormal" style="color:var(--mint)">0</b></span>
             <span class="sum-chip">Abnormal <b id="sumAbnormal" style="color:var(--red)">0</b></span>
             <span class="sum-chip">Human review <b id="sumReview" style="color:var(--amber)">0</b></span>
+            <span class="sum-chip">Rejected <b id="sumRejected" style="color:var(--amber)">0</b></span>
           </div>
           <div id="batchTableWrap" hidden style="overflow-x:auto;margin-top:.6rem">
             <table id="batchTable">

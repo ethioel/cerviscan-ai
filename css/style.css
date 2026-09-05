@@ -263,10 +263,10 @@ nav{
 .donut{width:120px;height:120px;flex:none}
 .donut circle{fill:none;stroke-width:11;stroke-linecap:round}
 .donut .track{stroke:rgba(255,255,255,.07)}
-.donut .val{stroke:var(--grad-warm);stroke-dasharray:339.29;stroke-dashoffset:339.29;
-  transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1.6s var(--ease);
+.donut .val{stroke:#fb7185;stroke-dasharray:339.29;stroke-dashoffset:339.29;
+  transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1);
   filter:drop-shadow(0 0 8px rgba(251,113,133,.5))}
-.donut .val.tealv{stroke:var(--grad);filter:drop-shadow(0 0 8px rgba(45,212,191,.5))}
+.donut .val.tealv{stroke:#2dd4bf;filter:drop-shadow(0 0 8px rgba(45,212,191,.5))}
 .donut-lbl .n{font-family:var(--mono);font-weight:700;font-size:1.9rem}
 .donut-lbl .t{font-size:.8rem;color:var(--dim)}
 
