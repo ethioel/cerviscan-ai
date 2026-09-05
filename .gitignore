@@ -1,0 +1,30 @@
+# ── OS junk ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Editor ──
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Model weights — NEVER commit (live on Hugging Face) ──
+*.onnx
+*.pth
+*.safetensors
+
+# ── Local artifacts ──
+demo_pack/
+demo_pack.zip
+backup/
+*.zip
+
+# ── Secrets — NEVER commit ──
+kaggle.json
+.env
+.env.*
+
+# ── Python/notebook scratch (if you keep cells locally) ──
+__pycache__/
+.ipynb_checkpoints/
