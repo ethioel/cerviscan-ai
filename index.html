@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CerviScan AI — Cervical Cancer Intelligence for Ethiopia & Africa</title>
+<meta name="description" content="Live data hub, news and research on cervical cancer in Ethiopia and Africa, with an EfficientNet-B0 Pap smear classifier that runs entirely in your browser.">
+<meta property="og:title" content="CerviScan AI — Ethiopia & Africa Cervical Cancer Intelligence">
+<meta property="og:description" content="98.4% accurate Pap smear AI · live WHO/IARC data · news & research wires · 100% in-browser inference.">
+<meta name="theme-color" content="#04060a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ======================= NAV ======================= -->
+<nav>
+  <div class="nav-in">
+    <a href="#" class="logo" data-go="home"><span class="orb">🔬</span>CerviScan&nbsp;AI</a>
+    <ul class="nav-links" id="navLinks">
+      <li><button data-go="home" class="active">Home</button></li>
+      <li><button data-go="data">Data Hub</button></li>
+      <li><button data-go="news">News</button></li>
+      <li><button data-go="research">Research</button></li>
+      <li><button data-go="model">The Model</button></li>
+      <li><button data-go="demo">Live Demo</button></li>
+    </ul>
+    <div class="nav-cta">
+      <span class="sync-chip"><span class="pulse-dot"></span><span class="txt">DATA&nbsp;</span><span id="syncTime">—</span></span>
+      <button class="burger" id="burger">☰</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- ======================= HOME ======================= -->
+<section class="page active" id="page-home">
+
+  <header class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow"><span class="pulse-dot"></span> Live Intelligence · Ethiopia &amp; Africa</span>
+        <h1 class="hero-h1" id="heroH1"></h1>
+        <p class="lead">Cervical cancer takes an Ethiopian woman roughly <strong>every 105 minutes</strong> — yet it is one of the few cancers that is <strong class="strike">preventable</strong> and curable when caught early. CerviScan AI combines a live pan-African data hub with AI-assisted Pap smear screening that runs <strong>entirely in your browser</strong>.</p>
+        <div class="hero-btns">
+          <button class="btn btn-primary" data-go="demo">Try the Live Demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <button class="btn btn-ghost" data-go="data">Explore the Data Hub</button>
+          <button class="btn btn-ghost" data-go="news">Latest News</button>
+        </div>
+      </div>
+      <div class="hero-bento">
+        <div class="glass hb lift"><div class="num grad-text" data-count="8159">0</div><div class="lbl">New cases / year · Ethiopia</div></div>
+        <div class="glass hb lift"><div class="num" style="color:var(--red)" data-count="5007">0</div><div class="lbl">Deaths / year · Ethiopia</div></div>
+        <div class="glass hb lift hb-wide clock-cell">
+          <div><div class="lbl" style="margin-bottom:.3rem">Projected time until next death</div>
+            <div class="cd" id="deathClock">1:45:00</div></div>
+          <div class="radar"><i></i><i></i><i></i><b>WATCHING</b></div>
+        </div>
+        <div class="glass hb lift"><div class="num" style="color:var(--violet)" data-count="119" data-suffix="K">0</div><div class="lbl">African deaths / year</div></div>
+        <div class="glass hb lift"><div class="num" style="color:var(--amber)">≤4%</div><div class="lbl">Ethiopian women ever screened</div></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
+
+  <div class="sec wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">50 / 50 FOCUS</div>
+      <h2 class="k-title" data-text="One crisis, two lenses — Ethiopia & the continent."></h2>
+      <p>Half of this platform is devoted to Ethiopia's national emergency; the other half tracks the whole African continent — because the solutions travel between them.</p>
+    </div>
+    <div class="bento">
+      <div class="glass b lift b-2x2 b-hero-teal reveal">
+        <span class="tag">🇪🇹 ETHIOPIA</span>
+        <div class="big grad-text" data-count="16.4" data-dec="1">0</div>
+        <div class="sub">age-standardised cases per 100,000 women — the 2<sup>nd</sup> most common cancer among Ethiopian women. Roughly <b>35.2&nbsp;million</b> women aged 15+ are at risk, over <b>80%</b> of cases are found late, and fewer than <b>1 in 25</b> has ever been screened.</div>
+        <div class="chiprow">
+          <span class="chip warn">HPV vax since 2018</span>
+          <span class="chip ok">VIA screening at PHCs</span>
+          <span class="chip bad">Screening ≤4%</span>
+          <span class="chip">HPV 16/18 → ~70% of cases</span>
+        </div>
+        <div class="src">Source: <a href="https://hpvcentre.net/" target="_blank" rel="noopener">ICO/IARC HPV Information Centre</a> · <a href="https://www.moh.gov.et/" target="_blank" rel="noopener">FMOH Ethiopia</a></div>
+      </div>
+      <div class="glass b lift b-2x1 b-hero-violet reveal">
+        <span class="tag">🌍 AFRICA</span>
+        <div class="big" style="color:var(--violet)" data-count="140" data-suffix="K">0</div>
+        <div class="sub">new cases across the WHO African Region every year — ≈ <b>1 in 4</b> of global cases, but ≈ <b>1 in 3</b> of global deaths, because most women are diagnosed too late.</div>
+        <div class="src">Source: <a href="https://www.afro.who.int/health-topics/cervical-cancer" target="_blank" rel="noopener">WHO AFRO</a></div>
+      </div>
+      <div class="glass b lift reveal">
+        <span class="tag">WHO TARGET 2030</span>
+        <div class="big" style="color:var(--amber)">90·70·90</div>
+        <div class="sub">vaccinate · screen · treat — the global elimination strategy launched in 2020.</div>
+        <div class="src"><a href="https://www.who.int/publications/i/item/9789240014107" target="_blank" rel="noopener">WHO Global Strategy →</a></div>
+      </div>
+      <div class="glass b lift reveal">
+        <span class="tag">PROOF IT WORKS</span>
+        <div class="big" style="color:var(--mint)">&gt;90%</div>
+        <div class="sub">HPV vaccination coverage in Rwanda's school-based programme — elimination is achievable in Africa.</div>
+        <div class="src"><a href="https://www.afro.who.int/" target="_blank" rel="noopener">WHO AFRO →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec wrap" style="padding-top:0">
+    <div class="sec-head reveal">
+      <div class="kicker">WHAT THIS PLATFORM DOES</div>
+      <h2 class="k-title" data-text="Three engines, one mission."></h2>
+    </div>
+    <div class="bento">
+      <div class="glass b lift reveal"><span class="tag">01 · SCREEN</span>
+        <div class="sub" style="margin-top:0">An EfficientNet-B0 model classifies Pap smear cells into 5 classes with <b style="color:var(--text)">98.4% accuracy</b> — and it runs <b style="color:var(--text)">in your browser</b>, so patient images never leave the device.</div>
+        <div class="src"><button class="btn btn-ghost btn-sm" data-go="demo">Open the demo →</button></div></div>
+      <div class="glass b lift reveal"><span class="tag">02 · MEASURE</span>
+        <div class="sub" style="margin-top:0">A living data hub of curated epidemiology from WHO, IARC/GLOBOCAN and the ICO HPV Centre — every figure carries its source, rendered into live charts.</div>
+        <div class="src"><button class="btn btn-ghost btn-sm" data-go="data">Open the hub →</button></div></div>
+      <div class="glass b lift reveal"><span class="tag">03 · LISTEN</span>
+        <div class="sub" style="margin-top:0">Live news and peer-reviewed research pulled straight from public APIs — Google News for headlines across Africa, PubMed for African science — refreshed every 10 minutes.</div>
+        <div class="src"><button class="btn btn-ghost btn-sm" data-go="news">Read the news →</button></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= DATA HUB ======================= -->
+<section class="page" id="page-data">
+  <div class="sec wrap" style="padding-top:8.5rem">
+    <div class="sec-head">
+      <div class="kicker">LIVE DATA HUB</div>
+      <h2 class="k-title" data-text="The numbers behind the crisis."></h2>
+      <p>Curated epidemiology with sources on every tile. All figures live in <code class="mono" style="color:var(--teal)">js/data.js</code> — edit once, every chart and card updates.</p>
+    </div>
+
+    <!-- ===== ETHIOPIA (50%) ===== -->
+    <div class="sec-head" style="margin-bottom:1.4rem">
+      <div class="kicker">FOCUS 1 / 2</div>
+      <h2 style="font-family:var(--display)">Ethiopia <span class="split-badge badge-et">50% FOCUS</span></h2>
+    </div>
+    <div class="bento" style="margin-bottom:4rem">
+      <div class="glass b lift b-2x2 b-hero-red reveal">
+        <span class="tag">⏱ THE HUMAN CLOCK</span>
+        <div class="big" style="color:var(--red)"><span data-count="105">0</span> min</div>
+        <div class="sub">the projected interval between cervical cancer deaths in Ethiopia — <b data-count="5007">0</b> women lost every year to a preventable disease.</div>
+        <div class="clock-cell" style="margin-top:auto">
+          <div><div class="lbl" style="margin-bottom:.3rem">Live countdown (est.)</div><div class="cd" id="deathClock2">1:45:00</div></div>
+        </div>
+        <div class="src">Basis: <a href="https://hpvcentre.net/" target="_blank" rel="noopener">ICO/IARC 2023 estimates</a> — 5,007 deaths ÷ 525,600 min/yr</div>
+      </div>
+      <div class="glass b lift reveal"><span class="tag">ANNUAL BURDEN</span>
+        <div class="big grad-text"><span data-count="8159">0</span></div>
+        <div class="sub">new cases diagnosed each year — the <b>2nd most common</b> cancer among Ethiopian women.</div>
+        <div class="src"><a href="https://gco.iarc.fr/" target="_blank" rel="noopener">GLOBOCAN / IARC →</a></div></div>
+      <div class="glass b lift reveal"><span class="tag">AT-RISK POPULATION</span>
+        <div class="big" style="color:var(--sky)"><span data-count="35.2" data-dec="1" data-suffix="M">0</span></div>
+        <div class="sub">women aged 15 and older at risk of developing cervical cancer.</div>
+        <div class="src"><a href="https://hpvcentre.net/" target="_blank" rel="noopener">ICO HPV Centre →</a></div></div>
+      <div class="glass b lift b-2x1 reveal">
+        <span class="tag">THE SCREENING GAP</span>
+        <div class="donut-wrap">
+          <svg class="donut" viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="54"/>
+            <circle class="val" cx="60" cy="60" r="54" data-pct="4"/>
+          </svg>
+          <div class="donut-lbl">
+            <div class="n" style="color:var(--red)">≤4%</div>
+            <div class="t">of eligible Ethiopian women have ever been screened — the national rate has traditionally hovered at 4% or lower.</div>
+          </div>
+        </div>
+        <div class="src"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=cervical+cancer+screening+uptake+Ethiopia" target="_blank" rel="noopener">Meta-analyses on PubMed →</a></div>
+      </div>
+      <div class="glass b lift b-1x2 reveal">
+        <span class="tag">NATIONAL RESPONSE</span>
+        <div class="tl">
+          <div class="tl-item"><span class="yr">2015 →</span><b>National Cancer Control Plan</b><p>Cervical cancer named a priority; VIA "screen-and-treat" rolled out to primary hospitals.</p></div>
+          <div class="tl-item"><span class="yr">2018</span><b>National HPV vaccination launch</b><p>School- and facility-based campaign starting with 14-year-old girls.</p></div>
+          <div class="tl-item"><span class="yr">2020</span><b>Global elimination pledge</b><p>Ethiopia adopts the WHO 90·70·90 strategy targets.</p></div>
+          <div class="tl-item"><span class="yr">2022+</span><b>Single-dose HPV schedule</b><p>Aligned with WHO's 2022 single-dose recommendation — more girls covered per dose.</p></div>
+        </div>
+        <div class="src"><a href="https://www.moh.gov.et/" target="_blank" rel="noopener">FMOH Ethiopia →</a></div>
+      </div>
+      <div class="glass b lift reveal"><span class="tag">VIRAL DRIVERS</span>
+        <div class="big" style="color:var(--amber)">~70%</div>
+        <div class="sub">of cervical cancers are caused by HPV types 16 &amp; 18 — exactly what the vaccine targets. Coverage among girls 9–14 sits at <b>51%</b>.</div>
+        <div class="src"><a href="https://hpvcentre.net/" target="_blank" rel="noopener">ICO →</a></div></div>
+      <div class="glass b lift reveal"><span class="tag">AI OPPORTUNITY</span>
+        <div class="big" style="color:var(--mint)">&lt;0.1s</div>
+        <div class="sub">for CerviScan AI to triage one cell — where a cytotechnologist may serve millions.</div>
+        <div class="src"><button class="btn btn-ghost btn-sm" data-go="model">How it works →</button></div></div>
+    </div>
+
+    <!-- ===== AFRICA (50%) ===== -->
+    <div class="sec-head" style="margin-bottom:1.4rem">
+      <div class="kicker">FOCUS 2 / 2</div>
+      <h2 style="font-family:var(--display)">Africa <span class="split-badge badge-af">50% FOCUS</span></h2>
+    </div>
+    <div class="bento" style="margin-bottom:4rem">
+      <div class="glass b lift b-2x2 b-hero-violet reveal">
+        <span class="tag">🌍 CONTINENTAL BURDEN</span>
+        <div class="big" style="color:var(--violet)"><span data-count="140">0</span>K&nbsp;·&nbsp;<span data-count="119">0</span>K</div>
+        <div class="sub">new cases · deaths every year in the WHO African Region. Africa carries ≈ <b>1 in 4</b> of global cases yet ≈ <b>1 in 3</b> of global deaths — the late-diagnosis penalty.</div>
+        <div class="chiprow">
+          <span class="chip bad">19 of top-20 highest-mortality countries are African</span>
+          <span class="chip warn">Leading cancer killer of women in 23 African countries</span>
+          <span class="chip">HIV ↑ risk ×6</span>
+        </div>
+        <div class="src">Sources: <a href="https://www.afro.who.int/health-topics/cervical-cancer" target="_blank" rel="noopener">WHO AFRO</a> · <a href="https://gco.iarc.fr/" target="_blank" rel="noopener">IARC</a> · <a href="https://www.who.int/news-room/fact-sheets/detail/cervical-cancer" target="_blank" rel="noopener">WHO</a></div>
+      </div>
+      <div class="glass b lift b-2x1 reveal">
+        <span class="tag">ELIMINATION TRACKER · WHO 90·70·90 BY 2030</span>
+        <div class="prog-row"><div class="prog-top"><b>HPV vaccination coverage</b><span>→ target 90%</span></div>
+          <div class="bar"><i data-w="30"></i><span class="goal" style="left:90%"></span></div></div>
+        <div class="prog-row"><div class="prog-top"><b>Women screened (2× lifetime)</b><span>→ target 70%</span></div>
+          <div class="bar"><i data-w="18"></i><span class="goal" style="left:70%"></span></div></div>
+        <div class="prog-row"><div class="prog-top"><b>Treated after positive screen</b><span>→ target 90%</span></div>
+          <div class="bar"><i data-w="25"></i><span class="goal" style="left:90%"></span></div></div>
+        <div class="src">Indicative regional estimates — verify at <a href="https://www.afro.who.int/health-topics/cervical-cancer" target="_blank" rel="noopener">WHO AFRO</a></div>
+      </div>
+      <div class="glass b lift b-1x2 reveal">
+        <span class="tag">SHARE OF GLOBAL TOTAL</span>
+        <div class="donut-wrap" style="margin-bottom:1.4rem">
+          <svg class="donut" viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="54"/>
+            <circle class="val tealv" cx="60" cy="60" r="54" data-pct="23"/>
+          </svg>
+          <div class="donut-lbl"><div class="n">≈23%</div><div class="t">of global cervical cancer cases occur in Africa</div></div>
+        </div>
+        <div class="donut-wrap">
+          <svg class="donut" viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="54"/>
+            <circle class="val" cx="60" cy="60" r="54" data-pct="35"/>
+          </svg>
+          <div class="donut-lbl"><div class="n" style="color:var(--red)">≈35%</div><div class="t">of global cervical cancer deaths — twice the case share</div></div>
+        </div>
+        <div class="src"><a href="https://gco.iarc.fr/" target="_blank" rel="noopener">IARC GLOBOCAN →</a></div>
+      </div>
+      <div class="glass b lift b-2x1 b-hero-teal reveal">
+        <span class="tag">✨ WHAT SUCCESS LOOKS LIKE</span>
+        <div class="big" style="color:var(--mint)">&gt;90%</div>
+        <div class="sub">Rwanda's school-based HPV vaccination coverage — proving high-income-level results are possible in Africa.</div>
+        <div class="src"><a href="https://www.afro.who.int/" target="_blank" rel="noopener">WHO AFRO →</a></div>
+      </div>
+    </div>
+
+    <!-- ===== CHARTS ===== -->
+    <div class="sec-head" style="margin-bottom:1.4rem">
+      <div class="kicker">VISUAL ANALYTICS</div>
+      <h2 class="k-title" data-text="Charts that tell the story."></h2>
+      <p>Rendered live with Chart.js from <code class="mono" style="color:var(--teal)">js/data.js</code>. Rates are age-standardised (ASR) GLOBOCAN/ICO approximations — eastern &amp; southern Africa carry the world's heaviest burden, while Ethiopia's population scale makes its absolute burden enormous despite a lower rate.</p>
+    </div>
+    <div class="chart-grid" style="margin-bottom:4rem">
+      <div class="glass chart-card lift reveal">
+        <div class="chart-head"><h3>Incidence leaderboard · ASR per 100,000 women</h3></div>
+        <div class="canvas-wrap"><canvas id="chartCountries" aria-label="Bar chart of cervical cancer incidence by African country"></canvas></div>
+        <div class="src">Approx. GLOBOCAN/ICO estimates — <a href="https://gco.iarc.fr/today" target="_blank" rel="noopener">verify live on GLOBOCAN →</a></div>
+      </div>
+      <div class="glass chart-card lift reveal">
+        <div class="chart-head"><h3>Africa's share of the global burden</h3></div>
+        <div class="canvas-wrap"><canvas id="chartShare" aria-label="Doughnut chart of Africa's share of global cases and deaths"></canvas></div>
+        <div class="chiprow">
+          <span class="chip ok">Cases share ≈ 23%</span>
+          <span class="chip bad">Deaths share ≈ 35%</span>
+          <span class="chip">Rest of world</span>
+        </div>
+        <div class="src"><a href="https://gco.iarc.fr/" target="_blank" rel="noopener">IARC GLOBOCAN →</a></div>
+      </div>
+      <div class="glass chart-card lift reveal">
+        <div class="chart-head"><h3>Projected trajectory · WHO African Region</h3></div>
+        <div class="canvas-wrap"><canvas id="chartProjection" aria-label="Line chart of projected cases and deaths to 2040"></canvas></div>
+        <div class="src">Illustrative business-as-usual projections — <a href="https://gco.iarc.fr/" target="_blank" rel="noopener">IARC →</a> · <a href="https://www.who.int/news-room/fact-sheets/detail/cervical-cancer" target="_blank" rel="noopener">WHO →</a></div>
+      </div>
+      <div class="glass chart-card lift reveal">
+        <div class="chart-head"><h3>The survival gap · deaths per 100 new cases</h3></div>
+        <div class="canvas-wrap"><canvas id="chartGap" aria-label="Bar chart of mortality to incidence ratio"></canvas></div>
+        <div class="src">Derived from ICO/IARC &amp; GLOBOCAN estimates — the late-diagnosis penalty in numbers.</div>
+      </div>
+    </div>
+
+    <!-- ===== SOURCES ===== -->
+    <div class="sec-head reveal" style="margin-bottom:1.4rem">
+      <div class="kicker">PRIMARY SOURCES</div>
+      <h2 class="k-title" data-text="Where the data comes from."></h2>
+    </div>
+    <div class="src-grid reveal">
+      <a class="glass lift src-card" href="https://www.who.int/news-room/fact-sheets/detail/cervical-cancer" target="_blank" rel="noopener"><b>WHO — Cervical Cancer</b><span>Fact sheet: key facts, HPV, global strategy &amp; screening guidance.</span></a>
+      <a class="glass lift src-card" href="https://gco.iarc.fr/" target="_blank" rel="noopener"><b>IARC — GLOBOCAN</b><span>Cancer incidence &amp; mortality estimates for every country.</span></a>
+      <a class="glass lift src-card" href="https://hpvcentre.net/" target="_blank" rel="noopener"><b>ICO/IARC HPV Centre</b><span>Country fact sheets: HPV prevalence, cases, deaths, vaccination.</span></a>
+      <a class="glass lift src-card" href="https://www.afro.who.int/health-topics/cervical-cancer" target="_blank" rel="noopener"><b>WHO AFRO</b><span>Regional cervical-cancer programme &amp; elimination updates.</span></a>
+      <a class="glass lift src-card" href="https://www.moh.gov.et/" target="_blank" rel="noopener"><b>FMOH Ethiopia</b><span>Ethiopian Ministry of Health — national plans &amp; programmes.</span></a>
+      <a class="glass lift src-card" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener"><b>PubMed / NCBI</b><span>Live research feed on this site is fetched from PubMed E-utilities.</span></a>
+    </div>
+    <p class="disc reveal"><b>Methodology &amp; honesty note:</b> Headline tiles use the most widely cited estimates (ICO/IARC 2023 for Ethiopia, WHO AFRO &amp; GLOBOCAN for the continent) and are labelled "≈" where values vary between sources. Projections and derived ratios are illustrative. News and research are fetched live from public APIs with cached fallbacks, refreshing every 10 minutes. No number here should be cited medically without checking the linked primary source.</p>
+  </div>
+</section>
+
+<!-- ======================= NEWS ======================= -->
+<section class="page" id="page-news">
+  <div class="sec wrap" style="padding-top:8.5rem">
+    <div class="sec-head">
+      <div class="kicker">LIVE NEWS WIRE</div>
+      <h2 class="k-title" data-text="Cervical cancer, as it happens."></h2>
+      <p>Fetched live from Google News RSS — split 50/50 between Ethiopia and the rest of Africa. Auto-syncs every 10 minutes.</p>
+    </div>
+    <div class="controls">
+      <div class="fchips" id="newsFilters">
+        <button class="fchip on" data-f="all">All</button>
+        <button class="fchip" data-f="et">🇪🇹 Ethiopia</button>
+        <button class="fchip" data-f="af">🌍 Africa</button>
+      </div>
+      <div style="display:flex;gap:.8rem;align-items:center">
+        <span class="sync-chip"><span class="pulse-dot"></span>Synced <span id="newsSyncTime">—</span></span>
+        <button class="btn btn-ghost btn-sm" id="newsRefresh">↻ Refresh</button>
+      </div>
+    </div>
+    <div class="news-cols">
+      <div>
+        <div class="ncol-head"><span class="sq" style="background:var(--teal)"></span> Ethiopia <span style="color:var(--faint)">· 50%</span></div>
+        <div id="newsET"></div>
+      </div>
+      <div>
+        <div class="ncol-head"><span class="sq" style="background:var(--violet)"></span> Africa <span style="color:var(--faint)">· 50%</span></div>
+        <div id="newsAF"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= RESEARCH ======================= -->
+<section class="page" id="page-research">
+  <div class="sec wrap" style="padding-top:8.5rem">
+    <div class="sec-head">
+      <div class="kicker">AFRICAN RESEARCH OBSERVATORY</div>
+      <h2 class="k-title" data-text="Peer-reviewed science, live from PubMed."></h2>
+      <p>Queried live from NCBI PubMed E-utilities — papers with African/Ethiopian author affiliations, newest first. Auto-syncs every 10 minutes.</p>
+    </div>
+    <div class="controls">
+      <div class="fchips" id="resFilters">
+        <button class="fchip on" data-t="all">All Africa</button>
+        <button class="fchip" data-t="eth">Ethiopia</button>
+        <button class="fchip" data-t="esa">Eastern &amp; Southern Africa</button>
+        <button class="fchip" data-t="scr">Screening &amp; Early Detection</button>
+        <button class="fchip" data-t="hpv">HPV Vaccination</button>
+        <button class="fchip" data-t="ai">AI &amp; Digital Pathology</button>
+      </div>
+      <div style="display:flex;gap:.8rem;align-items:center">
+        <span class="sync-chip"><span class="pulse-dot"></span><span id="resSyncTime">—</span></span>
+        <button class="btn btn-ghost btn-sm" id="resRefresh">↻ Refresh</button>
+      </div>
+    </div>
+    <div id="resList"></div>
+  </div>
+</section>
+
+<!-- ======================= MODEL ======================= -->
+<section class="page" id="page-model">
+  <div class="sec wrap" style="padding-top:8.5rem">
+    <div class="sec-head">
+      <div class="kicker">CERVISCAN AI · THE ENGINE</div>
+      <h2 class="k-title" data-text="Expert cytology, in 0.1 seconds."></h2>
+      <p>EfficientNet-B0 transfer-learned on SIPaKMeD — the largest public Pap smear benchmark — with Grad-CAM explanations so clinicians see what the model sees.</p>
+    </div>
+
+    <div class="glass" style="padding:2rem;margin-bottom:1.4rem">
+      <div class="pipe">
+        <div class="glass pstep"><span class="ico">🖼️</span><h4>Input</h4><p>Pap smear cell<br>224×224 RGB</p></div>
+        <div class="glass pstep"><span class="ico">⚗️</span><h4>Preprocess</h4><p>Resize · normalise<br>ImageNet stats</p></div>
+        <div class="glass pstep"><span class="ico">🧠</span><h4>EfficientNet-B0</h4><p>Transfer learning<br>4.3M params</p></div>
+        <div class="glass pstep"><span class="ico">📊</span><h4>Classify</h4><p>5-class softmax<br>+ confidence</p></div>
+        <div class="glass pstep"><span class="ico">🔍</span><h4>Explain</h4><p>Grad-CAM heatmap<br>nucleus attention</p></div>
+        <div class="glass pstep"><span class="ico">🚦</span><h4>Confidence gate</h4><p>Below 70% →<br>human review</p></div>
+        <div class="glass pstep"><span class="ico">🏥</span><h4>Triage</h4><p>Clear / review<br>/ urgent referral</p></div>
+      </div>
+    </div>
+
+    <div class="glass arch" style="margin-bottom:1.4rem">
+<span class="cm"># Input: 224 × 224 × 3 (RGB Pap smear cell)</span><br>
+<span class="hl">Input</span> → (224, 224, 3) → <span class="hl">timm EfficientNet-B0 backbone</span> <span class="cm"># ImageNet pre-trained · num_classes=0</span><br>
+→ <span class="hl">1280-D feature vector</span> → Dropout(0.4) → Dense(256) + ReLU → Dropout(0.2)<br>
+→ Dense(5) + Softmax → <span class="hl">[Dyskeratotic · Koilocytotic · Metaplastic · Parabasal · Superficial-Intermediate]</span>
+    </div>
+
+    <div class="sec-head reveal" style="margin-bottom:1.4rem">
+      <div class="kicker">VALIDATION RESULTS</div>
+      <h2 class="k-title" data-text="98.4% accuracy, class by class."></h2>
+      <p>80/20 stratified split on SIPaKMeD — 810 validation images · seed 42.</p>
+    </div>
+    <div class="results-grid" style="margin-bottom:1.4rem">
+      <div class="glass b reveal">
+        <span class="tag">OVERALL</span>
+        <div class="big grad-text">98.40%</div>
+        <div class="sub">Top-1 accuracy</div>
+        <div style="margin-top:1rem">
+          <div class="mrow"><span class="mn">Macro F1-score</span><span class="mv good">98.40%</span></div>
+          <div class="mrow"><span class="mn">Normal sensitivity (5-class)</span><span class="mv good">99.69%</span></div>
+          <div class="mrow"><span class="mn">Abnormal sensitivity (5-class)</span><span class="mv good">97.54%</span></div>
+        </div>
+      </div>
+      <div class="glass b reveal">
+        <span class="tag">PER-CLASS F1</span>
+        <div style="margin-top:.4rem">
+          <div class="mrow"><span class="mn">Dyskeratotic</span><span class="mv good">0.9908</span></div>
+          <div class="mrow"><span class="mn">Koilocytotic (HPV)</span><span class="mv warn">0.9632</span></div>
+          <div class="mrow"><span class="mn">Metaplastic</span><span class="mv good">0.9781</span></div>
+          <div class="mrow"><span class="mn">Parabasal</span><span class="mv good">1.0000</span></div>
+          <div class="mrow"><span class="mn">Superficial-Intermediate</span><span class="mv good">0.9880</span></div>
+        </div>
+      </div>
+      <div class="glass b lift b-hero-teal reveal">
+        <span class="tag">🎯 BINARY TRIAGE · THE CLINICAL VIEW</span>
+        <div class="big" style="color:var(--mint)">99.5%</div>
+        <div class="sub">triage accuracy (Normal vs Abnormal). Abnormal sensitivity <b>99.4%</b> · normal specificity <b>99.7%</b>. Of 13 total errors, 10 are harmless subtype swaps caught by the review workflow — only <b>3 of 487</b> abnormal cells (0.62%) were missed.</div>
+        <div class="src">Derived from the 5-class confusion matrix · 810 validation images</div>
+      </div>
+    </div>
+
+    <div class="glass reveal" style="overflow-x:auto;margin-bottom:1.4rem">
+      <table>
+        <thead><tr><th>Cell type</th><th>Category</th><th>Precision</th><th>Recall</th><th>F1</th><th>Support</th></tr></thead>
+        <tbody>
+          <tr><td><b>Dyskeratotic</b></td><td>Abnormal</td><td class="mono">0.9878</td><td class="mono">0.9939</td><td class="mono" style="color:var(--mint)">0.9908</td><td class="mono">163</td></tr>
+          <tr><td><b>Koilocytotic</b></td><td>HPV-related</td><td class="mono">0.9752</td><td class="mono">0.9515</td><td class="mono" style="color:var(--amber)">0.9632</td><td class="mono">165</td></tr>
+          <tr><td><b>Metaplastic</b></td><td>Abnormal</td><td class="mono">0.9750</td><td class="mono">0.9811</td><td class="mono" style="color:var(--mint)">0.9781</td><td class="mono">159</td></tr>
+          <tr><td><b>Parabasal</b></td><td>Normal</td><td class="mono">1.0000</td><td class="mono">1.0000</td><td class="mono" style="color:var(--mint)">1.0000</td><td class="mono">157</td></tr>
+          <tr><td><b>Superficial-Intermediate</b></td><td>Normal</td><td class="mono">0.9821</td><td class="mono">0.9940</td><td class="mono" style="color:var(--mint)">0.9880</td><td class="mono">166</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bento reveal">
+      <div class="glass b lift b-hero-teal"><span class="tag">✅ NORMAL CELLS</span>
+        <div class="sub" style="margin-top:0">99.7% sensitivity clears healthy patients correctly — reducing unnecessary referrals and clinic congestion.</div></div>
+      <div class="glass b lift" style="background:linear-gradient(150deg,rgba(251,191,36,.1),transparent)"><span class="tag">⚠️ HPV CELLS</span>
+        <div class="sub" style="margin-top:0">Koilocytotic recall 95.2% — still our most conservative class. HPV-flagged cells always get mandatory human review.</div></div>
+      <div class="glass b lift b-hero-red"><span class="tag">🚨 ABNORMAL CELLS</span>
+        <div class="sub" style="margin-top:0">99.4% sensitivity at the triage level (97.5% per-subtype) — pre-cancerous change caught early.</div></div>
+      <div class="glass b lift"><span class="tag">⚕️ DISCLAIMER</span>
+        <div class="sub" style="margin-top:0">Research prototype benchmarked on public data. Not a medical device — clinical validation required before deployment.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= DEMO ======================= -->
+<section class="page" id="page-demo">
+  <div class="sec wrap" style="padding-top:8.5rem">
+    <div class="sec-head">
+      <div class="kicker">LIVE INFERENCE · RUNS IN YOUR BROWSER</div>
+      <h2 class="k-title" data-text="Upload cells. Watch it think."></h2>
+      <p><span data-bind="model.arch"></span> · fp16 ONNX · <span data-bind="model.sizeMB"></span>&nbsp;MB, loaded once.
+         Inference happens <b>entirely on your device</b> — no image ever leaves your machine. Research prototype, not a medical device.</p>
+    </div>
+
+    <div class="glass" style="padding:1.3rem 1.7rem;margin-bottom:16px">
+      <div class="ml-row"><span id="mlStatus">Model not loaded yet…</span><span class="mono" id="mlPct">—</span></div>
+      <div class="bar"><i id="mlBar"></i></div>
+    </div>
+
+    <div class="fchips" style="margin-bottom:1rem">
+      <button class="fchip on" id="modeSingle">Single image</button>
+      <button class="fchip" id="modeBatch">🗂 Batch clinic mode</button>
+    </div>
+
+    <div class="glass demo-left" style="margin-bottom:16px">
+      <div class="dropzone" id="dropzone" tabindex="0">
+        <div class="dz-icon">🔬</div>
+        <b id="dzTitle">Drop a cell image here</b>
+        <span>click, drag &amp; drop, or paste (Ctrl+V) · PNG / JPG</span>
+        <input type="file" id="cellFile" accept="image/*" multiple hidden>
+      </div>
+    </div>
+
+    <!-- SINGLE -->
+    <div id="singlePane">
+      <div class="demo-grid">
+        <div class="glass demo-left">
+          <div class="preview-wrap" id="previewWrap" hidden>
+            <img id="previewImg" alt="Uploaded cell">
+          </div>
+          <p class="demo-note" id="previewHint" style="text-align:center;margin-top:1rem">
+            Your image appears here — it is processed locally and never uploaded.
+          </p>
+        </div>
+        <div class="glass demo-right">
+          <span class="tag">PREDICTION</span>
+          <div class="result-big" id="resultBig">—</div>
+          <div id="gateBadge"></div>
+          <div id="actionBadge"></div>
+          <div class="prob-list" id="probList"></div>
+          <p class="demo-note">Confidence below <b>70%</b> routes the cell to <b>mandatory human review</b> — the deployment
+             safety gate. In validation, 3 of 487 abnormal cells escaped the model; the gate policy exists to catch exactly these.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BATCH -->
+    <div id="batchPane" hidden>
+      <div class="demo-grid">
+        <div class="glass demo-left">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem">
+            <span class="tag" style="margin:0">QUEUE · <span id="batchCount">0</span> IMAGES</span>
+            <div style="display:flex;gap:.5rem">
+              <button class="btn btn-primary btn-sm" id="processBtn">▶ Process all</button>
+              <button class="btn btn-ghost btn-sm" id="clearBatch">Clear</button>
+            </div>
+          </div>
+          <div id="batchList"></div>
+        </div>
+        <div class="glass demo-right">
+          <span class="tag">TRIAGE SUMMARY</span>
+          <div class="sum-row" style="margin-top:.4rem">
+            <span class="sum-chip">Processed <b id="sumTotal">0</b></span>
+            <span class="sum-chip">Normal <b id="sumNormal" style="color:var(--mint)">0</b></span>
+            <span class="sum-chip">Abnormal <b id="sumAbnormal" style="color:var(--red)">0</b></span>
+            <span class="sum-chip">Human review <b id="sumReview" style="color:var(--amber)">0</b></span>
+          </div>
+          <div id="batchTableWrap" hidden style="overflow-x:auto;margin-top:.6rem">
+            <table id="batchTable">
+              <thead><tr><th>#</th><th>File</th><th>Prediction</th><th>Conf.</th><th>%</th><th>Category</th><th>Gate</th><th>Action</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="export-bar" id="exportBar" hidden>
+            <button class="btn btn-ghost btn-sm" id="csvBtn">⬇ Download CSV</button>
+            <button class="btn btn-ghost btn-sm" id="jsonBtn">⬇ Download JSON</button>
+          </div>
+          <p class="demo-note">Batch mode mirrors a clinic workflow: every image gets a prediction, a confidence score,
+             a category and a triage action — exportable for records or review.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-quote grad-text">"AI that doesn't just classify cells — it protects the women who need it most."</div>
+    <div class="foot-grid">
+      <div>
+        <b style="color:var(--text)">CerviScan AI <span class="mono" style="font-size:.7rem;color:var(--faint)">v2.0</span></b><br>
+        <span data-bind="model.arch"></span> · Grad-CAM<br>
+        Data: WHO · IARC GLOBOCAN · ICO HPV Centre · FMOH Ethiopia<br>
+        Live feeds: Google News RSS · PubMed E-utilities
+      </div>
+      <div>
+        <b style="color:var(--text)">Pages</b><br>
+        <a href="#" data-go="home">Home</a> · <a href="#" data-go="data">Data Hub</a> ·
+        <a href="#" data-go="news">News</a><br>
+        <a href="#" data-go="research">Research</a> ·
+        <a href="#" data-go="model">The Model</a> · <a href="#" data-go="demo">Live Demo</a>
+      </div>
+      <div>
+        <b style="color:var(--text)">Open science</b><br>
+        <a href="https://www.kaggle.com/datasets/akshaykrishnan/sipakmed5" target="_blank" rel="noopener">SIPaKMeD dataset →</a><br>
+        Weights &amp; exports verified on the full validation set
+      </div>
+      <div class="foot-social">
+        <a class="soc" id="lnkGithub" target="_blank" rel="noopener" aria-label="GitHub" hidden>
+          <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        </a>
+        <a class="soc" id="lnkHf" target="_blank" rel="noopener" aria-label="Hugging Face model" hidden>🤗</a>
+        <a class="soc" id="lnkKaggle" target="_blank" rel="noopener" aria-label="Kaggle notebook" hidden style="font-family:var(--mono);font-weight:800">K</a>
+        <a class="soc" id="lnkLinkedin" target="_blank" rel="noopener" aria-label="LinkedIn" hidden>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
+        </a>
+      </div>
+    </div>
+    <p style="margin-top:2rem;font-size:.72rem;color:var(--faint)">
+      Figures are estimates from cited primary sources; verify before medical or policy use. This site is not a medical device.
+    </p>
+  </div>
+</footer>
+
+<div id="toast"><span class="pulse-dot"></span><span id="toastMsg"></span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="js/data.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/charts.js" defer></script>
+<script src="js/news.js" defer></script>
+<script src="js/research.js" defer></script>
+<script src="js/demo.js" defer></script>
+</body>
+</html>
