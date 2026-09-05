@@ -43,7 +43,7 @@
     try {
       st.textContent = 'Loading runtime…';
       if (!window.ort) await loadScript('https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js');
-      ort.env.wasm.numThreads = 1;   /* GitHub Pages has no COOP/COEP */
+      ort.env.wasm.numThreads = 1;  
 
       st.textContent = 'Downloading model…';
       try { session = await createSession(M.url); }
