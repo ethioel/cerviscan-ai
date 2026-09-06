@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔬 CerviScan AI
+# CerviScan AI
 
 ### AI-powered cervical cancer screening intelligence for Ethiopia & Africa
 
@@ -55,7 +55,7 @@ And Many More..,
 
 ---
 
-## 🎯 The model, honestly stated
+## 🎯 The model
 
 EfficientNet-B0 (timm) + custom head · 4.3M params · trained on **[SIPaKMeD](https://www.kaggle.com/datasets/akshaykrishnan/sipakmed5)** (4,049 cells, 80/20 stratified split) · serving as fp16 ONNX, 8.3 MB.
 
