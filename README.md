@@ -102,9 +102,9 @@ The full pipeline — data ingest, augmentation, training, early stopping, Grad-
 [![Hugging Face](https://img.shields.io/badge/HF-ethioel-FFD21E?style=flat-square)](https://huggingface.co/ethioel)
 [![Kaggle](https://img.shields.io/badge/Kaggle-ethioel-20BEFF?style=flat-square&logo=kaggle&logoColor=white)](https://www.kaggle.com/ethioel)
 
-**Data sources:** WHO · IARC GLOBOCAN · ICO/IARC HPV Centre · WHO AFRO · FMOH Ethiopia · NCBI PubMed
-**Dataset:** [SIPaKMeD](https://www.kaggle.com/datasets/akshaykrishnan/sipakmed5) — with gratitude to its creators
-**Runtime:** [onnxruntime-web](https://onnxruntime.ai/) · [Chart.js](https://www.chartjs.org/)
+- **Data sources:** WHO · IARC GLOBOCAN · ICO/IARC HPV Centre · WHO AFRO · FMOH Ethiopia · NCBI PubMed
+- **Dataset:** [SIPaKMeD](https://www.kaggle.com/datasets/akshaykrishnan/sipakmed5) — with gratitude to its creators
+- **Runtime:** [onnxruntime-web](https://onnxruntime.ai/) · [Chart.js](https://www.chartjs.org/)
 
 ---
 
