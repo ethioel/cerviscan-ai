@@ -6,14 +6,14 @@
 window.CERVI = {
 
   /* ---------- Site identity & links ---------- */
-  site: {
+ site: {
     name: 'CerviScan AI',
     version: '2.0',
     github:      'https://github.com/ethioel/cerviscan-ai',
-    linkedin:    'www.linkedin.com/in/samuel-kahsay',
+    linkedin:    'https://www.linkedin.com/in/samuel-kahsay', 
     huggingface: 'https://huggingface.co/ethioel/cerviscan-b0',
     kaggle:      'https://www.kaggle.com/ethioel/cervical-cancer-detector'
-  },
+},
 
   ethiopia: {
     cases: 8159, deaths: 5007,
